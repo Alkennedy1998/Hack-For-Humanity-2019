@@ -7,3 +7,4 @@ if(port == null || port == ""){
 }
 
 app.listen(port, () => console.log(`Image downloader listening on port ${port}!`))
+
