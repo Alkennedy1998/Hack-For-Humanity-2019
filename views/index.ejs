@@ -1,0 +1,26 @@
+<html>
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <h1>Basic HTML page to test file downloading and uploading</h1>
+  <p>YALL CAN EVEN UPLOAD GIFS !!!</p>
+  <form method="post" enctype="multipart/form-data" action="/upload">
+    <input type="file" name="myImage">
+    <input type="submit" value="Submit">
+</form>
+
+<h2>Below is the last image uploaded by anyone</h2>
+<video id="videoPlayer" controls>
+	<source src="/streaming/video" type="video/mp4">
+	<p>Your browser does not support H.264/MP4.</p>
+</video>
+<!--<img src="/upload/image.png" />-->
+
+
+</body>
+
+</html>
