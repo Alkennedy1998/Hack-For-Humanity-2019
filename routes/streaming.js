@@ -35,17 +35,4 @@ router.get('/video', function(req, res) {
     }
   });
 
-router.get('/stream', function(req,res) {
-  const fileID = req.params.fileID;
-  console.log('FileID Recieved');
-  for(int i = 0; i < Files.length; i++){
-    
-
-
-  }
-
-  res.send(IP);
-  console.log('Array of IPs Sent');
-});
-
   module.exports = router;
