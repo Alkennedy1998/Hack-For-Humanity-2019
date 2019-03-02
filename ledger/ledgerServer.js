@@ -8,6 +8,6 @@ app.get('/test', (req, res) => {
 	res.send(req.params.name)
 });
 
-access.pry();	
+access.retrieve('name');	
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

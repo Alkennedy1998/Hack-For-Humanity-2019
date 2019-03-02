@@ -25,8 +25,8 @@ await storage.init({
 }
 
 const access = {
-	pry: async () => {
-		console.log(await storage.getItem('name'));
+	retrieve: async (id) => {
+		console.log(await storage.getItem(id));
 	}
 };
 
