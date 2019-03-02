@@ -1,33 +1,18 @@
 var express = require('express');
 var fetch = require('node-fetch');
+var ejs = require('ejs')
 var app = express();
 
 
 app.set('view engine', 'ejs');
 
-let ledger_ip = 'IP GOES HERE';
+
+var videosRouter = require('./routes/videos');
+
+app.use('/videos',videosRouter);
 
 app.get('/', (req, res) => {
     res.render('home');
-});
-
-app.get('/videos/:id', (req, res) => {
-    let vid_id = req.params.id;
-    const payload = {
-        id: vid_id
-    }
-
-    fetch(ledger_ip, {
-        method: 'POST',
-        body: payload
-    })
-    .then(function(response) {
-        return(response.json());
-    })
-    .then(function(myJSON) {
-        console.log(myJSON.ip);
-    });
-    res.render('stream');
 });
 
 let port = process.env.PORT;
