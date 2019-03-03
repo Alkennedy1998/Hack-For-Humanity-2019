@@ -42,12 +42,4 @@ router.get('/video', function(req, res) {
     }
   });
 
-/*  express.on('listening', (req,res,next) => {
-    //need to retrieve IP from SN node 
-    var SN_IP = ip.address();
-
-    request.post('http://ledgerlist.com', {form:{ip:SN_IP}});
-  }); */
-
-
   module.exports = router;
