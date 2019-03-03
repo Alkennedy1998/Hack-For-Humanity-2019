@@ -14,7 +14,7 @@ var videosRouter = require('./routes/videos');
 app.use('/videos',videosRouter);
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('displayingvideo'); //used to be index
 });
 
 let port = process.env.PORT;
