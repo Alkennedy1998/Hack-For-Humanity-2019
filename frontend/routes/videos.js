@@ -7,6 +7,8 @@ const fs = require("fs");
 const ejs = require("ejs");
 
 const ledger_ip = 'http://172.20.97.11';
+//this was the simplest way
+let new_id = '';
 
 const handleError = (err, res) => {
     res
@@ -62,8 +64,9 @@ router.get('/stream/:id', (req, res) => {
 
 router.get('/uploadpage', (req, res) => {
     let node_ips = [];
+    //let new_id = '';
 
-    fetch(ledger_ip + '/uploader/getips', {
+    fetch(ledger_ip + '/upload/getIps', {
         method: 'GET'
     })
     .then(function(response) {
@@ -71,12 +74,30 @@ router.get('/uploadpage', (req, res) => {
     })
     .then(function(myJSON) {
         node_ips = myJSON.ips;
+        new_id = myJSON.new_id;
     })
-    const node_ip = node_ips[0];
-
-    res.render('upload',{url:'http://' + node_ip + '/upload'});
+    .then( function() {
+        const node_ip = node_ips[0];
+        console.log(node_ip);
+        res.render('upload',{url:'http://' + node_ip + '/upload'});
+    });
 });
 
+router.get('/uploadsuccess', function(req, res){
+    
+})
+
+router.post('/update', function(req, res) {
+    let name = req.body.name;
+    let tag1 = req.body.tag1;
+    let tag2 = req.body.tag2;
+    let tag3 = req.body.tag3;
+
+    fetch(ledger_ip + '/update/new')
+    .then(function(response) {
+        console.log(response.status);
+    })
+})
 
 //Uploads the video
 router.post('/upload', (req, res) => {

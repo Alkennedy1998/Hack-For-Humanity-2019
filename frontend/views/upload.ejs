@@ -3,10 +3,35 @@
         <title>Upload</title>
     </head>
     <body>
-        <form method="post" enctype="multipart/form-data" action="<%=ip%>">
+        <form method="post" enctype="multipart/form-data" id="form1" action="<%=url%>">
             <input type="file" name="myVideo" id="video">
-            <button type="submit" id="uploadbutton">Search Tags</button>
         </form>
+
+        <form id = "form2" >
+            <input type ="name" name = "nameinput" id= "nameinput" size = 30>
+            <input type ="text" name = "tag1" id= "tag1" size = 30>
+            <input type ="text" name = "tag2" id= "tag2" size = 30>
+            <input type ="text" name = "tag3" id= "tag3" size = 30>
+        </form>
+
+        <input type="button" value="Click Me!" onclick="submitForms()" />
+            
     </body>
-    
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script>
+        submitForms = function(){
+            document.getElementById("form1").submit();
+            $.post('/videos/update', 
+                {
+                    name: $('#nameinput').val(),
+                    tag1: $('#tag1').val(),
+                    tag2: $('#tag2').val(),
+                    tag3: $('#tag3').val()
+                },
+                function(){
+                    console.log('success');
+                }
+            );
+        }
+    </script>
 </html>
