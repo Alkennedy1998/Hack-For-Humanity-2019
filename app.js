@@ -11,6 +11,7 @@ const fs = require("fs");
 var indexRouter = require('./routes/index');
 var uploadRouter = require('./routes/uploader');
 var streamingRouter = require ('./routes/streaming');
+var ledgerRouter = require('./routes/ledger');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.set('view engine', 'ejs');
 app.use('/', indexRouter);
 app.use('/upload',uploadRouter);
 app.use('/streaming',streamingRouter);
+app.use('/ledger',ledgerRouter);
 
 
 module.exports = app;
