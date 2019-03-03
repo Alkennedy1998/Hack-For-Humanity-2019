@@ -18,7 +18,19 @@
     <input type ="text" name = "tag" id= "searchtag" size = 30>
     <button type="submit" id="tagbutton">Search Tags</button>
   </form>
+      <input type ="text" name = "tag" id= "tagentry" size = 30>
+      <button type="submitTag" id="submitTag">Search Tags</button>
+    </form>
+  <!--<style>
+    .tagResults{
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    float: left;
+  }
+  </style>
 
+  <div class="tagResults"></div>-->
   <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
   <script>
     $('#searchbutton').click((e) => {
@@ -26,11 +38,25 @@
       const idField = $('#search');
       window.location.href = '/videos/stream/' + idField.val();
     });
+    $('#submitTag').click((e) => {
+      e.preventDefault();
+      const inputField = $('#tagentry');
+      window.location.href = '/videos/search/' + inputField.val();
+    });
 
-    $('#tagbutton').click((e) => {
-      const tagField = $('#searchtag');
-      //switch to new view here
-    })
+    // GET /TAG   JSON ajax syncronously
+    //pre id ? to display?
+    /*$.ajax({
+    url: "ledger/search/:", //???
+    type: "GET",
+    data: "objs",
+    dataType: "json",
+    async: false,
+    success: function(objs) {
+      $('.tagResults').append('<div class="id')
+    }
+});*/
+    // $('.tagResults').append(`<div class="id-${data.id}"><ol><li>${data.title}</li></ol></div>`);
   </script>
 </body>
 

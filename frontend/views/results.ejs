@@ -1,0 +1,15 @@
+<html>
+
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <h2>Results for Tag Name</h2>
+    <% for (let i=0; i< items.length; i++) { %>
+    <a href="stream/<%=items[i].id%>"> <%=items[i].name%></a>
+    </br>
+    <% } %>
+</body>
+</html>

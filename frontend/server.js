@@ -14,7 +14,7 @@ var videosRouter = require('./routes/videos');
 app.use('/videos',videosRouter);
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index'); //used to be index
 });
 
 app.get('/nodeips', (req, res) => {

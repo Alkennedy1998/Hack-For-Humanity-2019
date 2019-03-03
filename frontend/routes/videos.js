@@ -6,9 +6,9 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const ejs = require("ejs");
 
-const ledger_ip = 'http://172.20.97.11';
 //this was the simplest way
 let new_id = '';
+const ledger_ip = 'http://172.20.79.16';
 
 const handleError = (err, res) => {
     res
@@ -107,25 +107,34 @@ router.post('/update', function(req, res) {
     })
 })
 
-//Uploads the video
-router.post('/upload', (req, res) => {
-    //Get the stream node's ip to upload the video to
-    //Upload the video to that node
-    let ip;
-    
-    //Should send a post request to ledger node which should update its database
-    //and send me back an array of ip addresses of available nodes
-    fetch(ledger_ip + '/GetAddress', {
-        method: 'POST',
+
+//displays array of ojbs that match the tag input
+router.get('/search/:tag', (req, res) => {
+    //let newlink;
+    let objs; //array of objs
+    let taginput = req.params.tag;
+    const payload = {
+        id: taginput
+    }
+    console.log("Tag input:" + taginput);
+    fetch(ledger_ip + '/ledger/search/' + taginput, {
+        method: 'GET'
     })
     .then(function(response) {
         return(response.json());
     })
     .then(function(myJSON) {
-        console.log(myJSON.ip);
+        objs = myJSON; //is this legal 
+        console.log(objs);
+        res.render('results', {items: objs}); // GET /:tag ==> { }
     });
-    res.render('stream');
+    
+})
 
-});
+
+
+
+
+
 
 module.exports = router;
