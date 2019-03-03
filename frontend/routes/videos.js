@@ -61,7 +61,20 @@ router.get('/stream/:id', (req, res) => {
 })
 
 router.get('/uploadpage', (req, res) => {
-    res.render('upload');
+    let node_ips = [];
+
+    fetch(ledger_ip + '/uploader/getips', {
+        method: 'GET'
+    })
+    .then(function(response) {
+        return(response.json());
+    })
+    .then(function(myJSON) {
+        node_ips = myJSON.ips;
+    })
+    const node_ip = node_ips[0];
+
+    res.render('upload',{url:'http://' + node_ip + '/upload'});
 });
 
 

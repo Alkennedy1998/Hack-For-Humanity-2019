@@ -3,20 +3,10 @@
         <title>Upload</title>
     </head>
     <body>
-        <form method="post" enctype="multipart/form-data" action="/upload">
+        <form method="post" enctype="multipart/form-data" action="<%=ip%>">
             <input type="file" name="myVideo" id="video">
             <button type="submit" id="uploadbutton">Search Tags</button>
         </form>
     </body>
-    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
-    <script>
-    $('#uploadbutton').click((e) => {
-        e.preventDefault();
-        const file = $('#video');
-        $.get('/localhost/nodeips', function(data){
-            
-        });
-
-    });
-    </script>
+    
 </html>
