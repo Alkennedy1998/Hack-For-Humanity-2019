@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const access = require('./database.js'); 
+const jsonSort = require('./getAddress.js');
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -54,6 +56,13 @@ function checkFileType(file, cb){
   }
 }
 
+router.get('/getIps', (req, res) => {
+	let storArray = access.getStorageJSON();
+	let indexes = jsonSort(storArray);
+	let ips = [storArray[indexes[0]].ip, storArray[indexes[1]].ip, storArray[indexes[2]].ip];
+	res.status(200).send(ips);
+});
+
 router.post('/', (req, res) => {
   upload(req, res, (err) => {
     if(err){
@@ -69,7 +78,5 @@ router.post('/', (req, res) => {
     }
   });
 });
-
-
 
 module.exports = router;

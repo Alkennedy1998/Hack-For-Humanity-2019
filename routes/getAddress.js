@@ -42,10 +42,4 @@ for(j=0; j<indexes.length; j++)
 //should print 3, 8, 1 
 */
 
-var j = 0;
-for (j; j<3; j++)
-{
-    var cursor = indexes[j];
-    console.log(data[cursor].ip);
-    //should print 1.1.4  1.2.4  1.1.2
-}
+module.exports = jsonSort;

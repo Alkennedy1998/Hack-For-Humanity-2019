@@ -3,8 +3,8 @@
  const dataFile = './routes/data/fileData.json';
  //const dataFile = './data/fileData.json';
  
- const storageFile = './routes/data/streamNodeData.json';
- //const storageFile = './data/fileData.json';
+ //const storageFile = './routes/data/streamNodeData.json';
+ const storageFile = './data/streamNodeData.json';
  
  function parseJson(data, id){
 	console.log(data);
@@ -58,7 +58,7 @@ const access = {
 		let storArray = JSON.parse(raw);
 		let newObj = {
 			ip: ip,
-			vidNum: vidNum
+			numStore: vidNum
 		};
 		storArray.push(newObj);
 		fs.writeFile(storageFile, JSON.stringify(storArray), function(err) {
