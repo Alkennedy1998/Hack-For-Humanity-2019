@@ -16,6 +16,16 @@
  }
 
 const access = {
+	increaseVidAmount: (ip) => {
+		let raw = fs.readFileSync(storageFile);
+		let storArray = JSON.parse(raw);
+		for (i = 0; i<storArray.length; i++){
+			if (storArray[i].ip === ip) storArray[i].numStore++;
+		}
+		fs.writeFile(storageFile, JSON.stringify(storArray), function(err) {
+			if (err) throw (err);
+		});
+	},
 	getIp: (id) => {
 		//console.log(id);
 		let raw = fs.readFileSync(dataFile);
@@ -44,16 +54,6 @@ const access = {
 			if (err) throw (err);
 		});
 	},
-	increaseVidAmount: (ip) => {
-		let raw = fs.readFileSync(storageFile);
-		let storArray = JSON.parse(raw);
-		for (i = 0; i<storArray.length; i++){
-			if (storArray[i].ip === ip) storArray[i].numStore++;
-		}
-		fs.writeFile(storageFile, JSON.stringify(storArray), function(err) {
-			if (err) throw (err);
-		});
-	},
 	updateStorageNode: (ip, vidNum) => {
 		let raw = fs.readFileSync(storageFile);
 		let storArray = JSON.parse(raw);
@@ -74,7 +74,16 @@ const access = {
 	getStorageJSON: () => {
 		let raw = fs.readFileSync(storageFile);
 		return JSON.parse(raw);
+	},
+	search: (tag) => {
+		let raw = fs.readFileSync(dataFile);
+		let data = JSON.parse(raw);
+		//for (i = 0; i < data.length; i++){
+			
+		//}
 	}
 };
+
+access.getIp("0123456789");
 
 module.exports = access;
