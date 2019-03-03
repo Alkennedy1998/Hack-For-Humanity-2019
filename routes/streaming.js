@@ -11,7 +11,7 @@ var idNumber ="1551569388690"
 var aNewPath = "./videos/" + idNumber + ".mp4"
 
 router.get('/video', function(req, res) {
-    const path = aNewPath //MAKE THIS DYNAMIC
+    const path = "./videos/test.mp4" //MAKE THIS DYNAMIC
     const stat = fs.statSync(path)
     const fileSize = stat.size
     const range = req.headers.range
