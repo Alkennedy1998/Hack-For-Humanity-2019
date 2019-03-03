@@ -45,14 +45,13 @@ const access = {
 		return obj;//add logic later
 	},
 	upload: (id, name, tag1, tag2, tag3, ip) => {
-		//console.log(json);
 		let newObj = {
 			id: id,
 			name: name,
 			tags: [tag1, tag2, tag3],
-			ipLoc: [ip]
+			ipLoc: ip
 			};
-			console.log(ip.length);
+			console.log(newObj);
 		if (Array.isArray(ip)){
 			for (i = 0; i < ip.length; i++){
 				for (j = 0; j < storageFile.length; j++){
