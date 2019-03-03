@@ -60,7 +60,7 @@ function checkFileType(file, cb){
 router.post('/', (req, res) => {
   upload(req, res, (err) => {
     if(err){
-      res.send("error")
+      res.send(err)
     } 
     else {
       if(req.file == undefined){
