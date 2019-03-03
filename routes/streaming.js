@@ -3,6 +3,7 @@ var router = express.Router();
 const path = require("path");
 const fs = require("fs");
 const ejs = require('ejs'); //need this??
+var ip = require('ip');
 
 //test id: 1551569388690
 router.get("")
@@ -40,5 +41,13 @@ router.get('/video', function(req, res) {
       fs.createReadStream(path).pipe(res)
     }
   });
+
+  app.on('listening', function(req,res,next){
+    //need to retrieve IP from SN node 
+    var SN_IP = ip.address();
+
+    request.post('http://ledgerlist.com', {form:{ip:SN_IP}});
+  });
+
 
   module.exports = router;
