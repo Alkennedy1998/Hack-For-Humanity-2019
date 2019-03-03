@@ -76,14 +76,19 @@ const access = {
 		return JSON.parse(raw);
 	},
 	search: (tag) => {
+		console.log(tag);
 		let raw = fs.readFileSync(dataFile);
 		let data = JSON.parse(raw);
-		//for (i = 0; i < data.length; i++){
-			
-		//}
+		let matches = {};
+		for (i = 0; i < data.length; i++){
+			for (j = 0; j < data[i].tagslength; j++){
+				console.log("test");
+				if (data[i].tags[j] === tag)
+					matches.push(data[i]);
+			}
+		}
+		return matches;
 	}
 };
-
-access.getIp("0123456789");
 
 module.exports = access;
