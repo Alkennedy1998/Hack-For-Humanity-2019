@@ -1,10 +1,26 @@
  var fs = require('fs'); 
-
- const dataFile = './routes/data/fileData.json';
+ 
+ const dataAddress = './routes/data/fileData.json';
  //const dataFile = './data/fileData.json';
  
- const storageFile = './routes/data/streamNodeData.json';
+ const storageAddress = './routes/data/streamNodeData.json';
  //const storageFile = './data/streamNodeData.json';
+ 
+ var dataFile;
+ var storageFile;
+ 
+ function updateDataFile() {
+	 let raw = fs.readFileSync(dataAddress);
+	 dataFile = JSON.parse(raw);
+ }
+ 
+ function updateStorageFile() {
+	 let raw = fs.readFileSync(storageAddress);
+	 storageFile = JSON.parse(raw);
+ }
+ 
+ updateDataFile();
+ updateStorageFile();
  
  function parseJson(data, id){
 	//console.log(data);
@@ -17,30 +33,26 @@
 
 const access = {
 	increaseVidAmount: (ip) => {
-		let raw = fs.readFileSync(storageFile);
-		let storArray = JSON.parse(raw);
-		for (i = 0; i<storArray.length; i++){
-			if (storArray[i].ip === ip) storArray[i].numStore++;
+		for (i = 0; i<storageFile.length; i++){
+			if (storageFile[i].ip === ip) storageFile[i].numStore++;
 		}
-		fs.writeFile(storageFile, JSON.stringify(storArray), function(err) {
-			if (err) throw (err);
-		});
 	},
 	getIp: (id) => {
 		//console.log(id);
-		let raw = fs.readFileSync(dataFile);
-		let data = JSON.parse(raw);
-		let ip = parseJson(data, id);
-		//for (i = 0; i < ip.length; i++){
-			//access.increaseVidAmount(ip[i]);
-		//}
-		//let index = Math.floor(Math.random() * ip.length());
-		let obj = {ip: ip[0]};
+		let ip = parseJson(dataFile, id);
+		for (i = 0; i < ip.length; i++){
+			access.increaseVidAmount(ip[i]);
+		}
+		let index;
+		try{
+			index = Math.floor(Math.random() * ip.length());
+		} catch (err) {
+			index = 0;
+		}
+		let obj = {ip: ip[index]};
 		return obj;//add logic later
 	},
 	upload: (id, name, tags, ip) => {
-		let raw = fs.readFileSync(dataFile);
-		let json = JSON.parse(raw);
 		//console.log(json);
 		let newObj = {
 			id: id,
@@ -48,21 +60,31 @@ const access = {
 			tags: tags,
 			ipLoc: ip
 			};
-		json.push(newObj);
+		if (Array.isArray(ip)){
+			for (i = 0; i < ip.length; i++){
+				access.increaseVidAmount(ip[i]);
+			}
+		} else {
+			access.increaseVidAmount(ip);
+		}
+		dataFile.push(newObj);
 		//console.log(json);
-		fs.writeFile(dataFile, JSON.stringify(json), function(err) {
+		fs.writeFile(dataAddress, JSON.stringify(dataFile), function(err) {
 			if (err) throw (err);
 		});
+		fs.writeFile(storageAddress, JSON.stringify(storageFile), function(err) {
+			if (err) throw (err);
+		});
+		updateStorageFile();
+		updateDataFile();
 	},
 	updateStorageNode: (ip, vidNum) => {
-		let raw = fs.readFileSync(storageFile);
-		let storArray = JSON.parse(raw);
 		let newObj = {
 			ip: ip,
 			numStore: vidNum
 		};
-		storArray.push(newObj);
-		fs.writeFile(storageFile, JSON.stringify(storArray), function(err) {
+		storageFile.push(newObj);
+		fs.writeFile(storageAddress, JSON.stringify(storageFile), function(err) {
 			if (err) {
 				throw (err);
 				return -1;
@@ -70,21 +92,19 @@ const access = {
 				return 0;
 			}
 		});
+		updateStorageFile();
 	},
 	getStorageJSON: () => {
-		let raw = fs.readFileSync(storageFile);
-		return JSON.parse(raw);
+		return storageFile;
 	},
 	search: (tag) => {
 		console.log(tag);
-		let raw = fs.readFileSync(dataFile);
-		let data = JSON.parse(raw);
 		let matches = [];
 		let tempObj;
-		for (i = 0; i < data.length; i++){
-			for (j = 0; j < data[i].tags.length; j++){
-				if (data[i].tags[j] === tag){
-					tempObj = {id: data[i].id, name: data[i].name};
+		for (i = 0; i < dataFile.length; i++){
+			for (j = 0; j < dataFile[i].tags.length; j++){
+				if (dataFile[i].tags[j] === tag){
+					tempObj = {id: dataFile[i].id, name: dataFile[i].name};
 					matches.push(tempObj);
 				}
 			}
