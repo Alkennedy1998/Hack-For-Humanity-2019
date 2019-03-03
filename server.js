@@ -1,5 +1,6 @@
 var express = require('express');
 var app = require("./app.js")
+app.use(express.static('/public/images'))
 
 let port = process.env.PORT;
 if(port == null || port == ""){
