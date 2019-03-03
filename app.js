@@ -33,7 +33,20 @@ app.on('listening', (req,res,next) => {
     //need to retrieve IP from SN node 
     var SN_IP = ip.address();
 
-    request.post('http://ledgerlist.com', {form:{ip:SN_IP}});
+    var ledgerList = request.post('http://ledgerlist.com', {form:{ip:SN_IP}});
+
+    ledgerList.forEach(function(element){
+        ipToRequest = element.string() + '/AddNode';
+        request.post(ipToRequest,{form:{ip:SN_IP}},
+          function(err,httpResponse,body){
+            if(err){
+              console.log("BIG ERROR IN ON SERVER START FUNCTION");
+            }
+            else{
+            console.log("Streaming Node setup complete");
+                }
+           })
+    });
   }); 
 
 module.exports = app;
