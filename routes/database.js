@@ -44,13 +44,13 @@ const access = {
 		let obj = {ip: ip[index]};
 		return obj;//add logic later
 	},
-	upload: (id, name, tags, ip) => {
+	upload: (id, name, tag1, tag2, tag3, ip) => {
 		//console.log(json);
 		let newObj = {
 			id: id,
 			name: name,
-			tags: tags,
-			ipLoc: ip
+			tags: [tag1, tag2, tag3],
+			ipLoc: [ip]
 			};
 			console.log(ip.length);
 		if (Array.isArray(ip)){
