@@ -1,0 +1,25 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+  bottom: 50px;
+}
+.searchbars{
+  text-align: center;
+  margin:0px;
+  bottom: 300;
+}
+
+.imagerlogo{
+  margin:0px;
+  top: 10px;
+  text-align: center;
+}
+
+.intro{
+  text-align: center;
+  bottom: 200px;
+}

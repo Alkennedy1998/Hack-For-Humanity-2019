@@ -1,14 +1,22 @@
 <html>
-
 <head>
-  <title>Welcome to whatever this is</title>
+  <title>Express</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="shortcut icon" type="image/ico" href="/images/favicon.ico"/>
 </head>
 
 <body>
+  <div class ="imagerlogo">
+  <img src="/images/logo.png" type="image/png" alt="logo" width="500" height="150" >
+  </div>
+  <div class="uploader">
   <a href="/videos/uploadpage">Upload your videos here!</a> 
-  <h1>Search your video here!</h1>
+</div>
+  <div class = "intro">
+  <h1>An open distributed streaming platform</h1>
+  </div>
 
+<div class ="searchbars">
   <form id = "sbar" >
     <input type ="text" name = "id" id= "searchid" size = 30>
     <button type="submit" id="searchbutton">Search IDs</button>
@@ -18,6 +26,7 @@
       <input type ="text" name = "tag" id= "tagentry" size = 30>
       <button type="submitTag" id="submitTag">Search Tags</button>
     </form>
+    </div>
   <!--<style>
     .tagResults{
     width: 60px;
