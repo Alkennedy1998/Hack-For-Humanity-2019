@@ -1,5 +1,7 @@
 const app = require('express');
-const data = require('./data/test.json'); //CHANGE THIS TO THE ACTUAL FILE NAME AT SOME POINT
+const access = require('./database.js'); //CHANGE THIS TO THE ACTUAL FILE NAME AT SOME POINT
+
+const data = access.getStorageJSON();
 
 function jsonSort(array)
 {
