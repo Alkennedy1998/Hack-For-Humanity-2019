@@ -3,7 +3,6 @@ var router = express.Router();
 const path = require("path");
 const fs = require("fs");
 const ejs = require('ejs'); //need this??
-var ip = require('ip');
 
 //test id: 1551569388690
 router.get("")
@@ -11,8 +10,8 @@ router.get("")
 var idNumber ="1551569388690"
 var aNewPath = "./videos/" + idNumber + ".mp4"
 
-router.get('/video', function(req, res) {
-    const path = "./videos/test.mp4" //MAKE THIS DYNAMIC
+router.get('/video/:id', function(req, res) {
+    const path = `./videos/${req.params.id}.mp4` //MAKE THIS DYNAMIC -- I MADE IT DYNAMIC
     const stat = fs.statSync(path)
     const fileSize = stat.size
     const range = req.headers.range
@@ -42,12 +41,6 @@ router.get('/video', function(req, res) {
     }
   });
 
-  app.on('listening', function(req,res,next){
-    //need to retrieve IP from SN node 
-    var SN_IP = ip.address();
-
-    request.post('http://ledgerlist.com', {form:{ip:SN_IP}});
-  });
 
 
   module.exports = router;
