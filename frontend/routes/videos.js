@@ -66,12 +66,12 @@ router.get('/stream/:id', (req, res) => {
 router.get('/:tag', (req, res) => {
     //let newlink;
     let objs; //array of objs
-    let taginput = req.params.id;
+    let taginput = req.params.tag;
     const payload = {
         id: taginput
     }
     console.log("Tag input:" + taginput);
-    fetch(ledger_ip + '/legder/search/:' + taginput, {
+    fetch(ledger_ip + '/ledger/search/' + taginput, {
         method: 'GET'
     })
     .then(function(response) {
@@ -79,6 +79,7 @@ router.get('/:tag', (req, res) => {
     })
     .then(function(myJSON) {
         objs = myJSON; //is this legal 
+        console.log(objs);
         res.render('results', {items: objs}); // GET /:tag ==> { }
     });
     
