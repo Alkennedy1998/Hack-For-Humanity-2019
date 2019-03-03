@@ -3,8 +3,10 @@ var fetch = require('node-fetch');
 var ejs = require('ejs')
 var app = express();
 var bodyParser = require('body-parser');
-
-
+var path = require('path');
+//app.use(express.static(path.join(__dirname, '/public')));
+app.use('/images',express.static(path.join(__dirname, 'public/images')));
+app.use('/stylesheets',express.static(path.join(__dirname, 'public/stylesheets')));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
