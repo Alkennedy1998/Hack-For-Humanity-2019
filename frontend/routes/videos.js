@@ -17,7 +17,7 @@ const handleError = (err, res) => {
       .end("Oops! Something went wrong!");
   };
 
-
+var node_ip = "";
 
 //Gets a video but uses a post request to keep the id in the body
 /*router.post('/', (req, res) => {
@@ -43,7 +43,6 @@ const handleError = (err, res) => {
 });*/
 
 router.get('/stream/:id', (req, res) => {
-    let node_ip;
     let vid_id = req.params.id;
     
     console.log(vid_id);
@@ -92,6 +91,15 @@ router.post('/update', function(req, res) {
     let tag1 = req.body.tag1;
     let tag2 = req.body.tag2;
     let tag3 = req.body.tag3;
+    let ip = node_ip;
+
+    data = {
+        name: name,
+        tag1: tag1,
+        tag2: tag2,
+        tag3: tag3,
+        ip: ip
+    }
 
     fetch(ledger_ip + '/update/new')
     .then(function(response) {
