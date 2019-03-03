@@ -6,27 +6,24 @@
 </head>
 
 <body>
-  <h1>Basic HTML page to test file downloading and uploading</h1>
-  <p>YALL CAN EVEN UPLOAD GIFS !!!</p>
+  <a href="/videos/upload">Upload your videos here!</a> 
+  <h1>Search your video here!</h1>
 
-  <form id = "sbar" method = "post" action = "/videos">
-    <input type ="text" name = "id" size = 20>
-    <input type = "submit" value = "Search for ID">
+  <form id = "sbar" >
+    <input type ="text" name = "id" id= "search" size = 30>
+    <button type="submit" id="submit">Search</button>
   </form>
 
-  <form method="post" enctype="multipart/form-data" action="/upload">
-    <input type="file" name="myImage">
-    <input type="submit" value="Submit">
-</form>
-
-<h2>Below is the last image uploaded by anyone</h2>
-<video id="videoPlayer" controls>
-	<source src="/streaming/video" type="video/mp4">
-	<p>Your browser does not support H.264/MP4.</p>
-</video>
-<!--<img src="/upload/image.png" />-->
+  <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+  <script>
 
 
+    $('#submit').click((e) => {
+      e.preventDefault();
+      const inputField = $('#search');
+      window.location.href = '/videos/stream/' + inputField.val();
+    });
+  </script>
 </body>
 
 </html>

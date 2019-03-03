@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 const multer = require("multer");
 const path = require("path");
+const fetch = require("node-fetch");
 const fs = require("fs");
 const ejs = require("ejs");
 
-let ledger_ip = 'IP GOES HERE';
+const ledger_ip = 'http://172.20.97.11';
 
 const handleError = (err, res) => {
     res
@@ -16,15 +17,16 @@ const handleError = (err, res) => {
 
 
 
-//Gets a video
-router.post('/', (req, res) => {
+//Gets a video but uses a post request to keep the id in the body
+/*router.post('/', (req, res) => {
+    let ip;
     let vid_id = req.body.id;
     console.log(req.body);
     const payload = {
         id: vid_id
     }
 
-    fetch(ledger_ip + '/LedgerReq', {
+    fetch(ledger_ip + '/ledger', {
         method: 'POST',
         body: payload
     })
@@ -33,9 +35,32 @@ router.post('/', (req, res) => {
     })
     .then(function(myJSON) {
         console.log(myJSON.ip);
+        ip = myJSON.ip;
+    }); 
+    
+});*/
+
+router.get('/stream/:id', (req, res) => {
+    let node_ip;
+    let vid_id = req.params.id;
+    const payload = {
+        id: vid_id
+    }
+    console.log(vid_id);
+    fetch(ledger_ip + '/ledger/' + vid_id, {
+        method: 'GET'
+    })
+    .then(function(response) {
+        return(response.json());
+    })
+    .then(function(myJSON) {
+        //console.log(myJSON.ip);
+        node_ip = myJSON.ip;
+    }).then(function() {
+        node_ip = 'http://'+ node_ip + '/streaming/video/' + vid_id;
+        res.render('video', {ip: node_ip});
     });
-    res.render('stream');
-});
+})
 
 
 //Uploads the video
