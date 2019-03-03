@@ -6,7 +6,7 @@ console.log("Made it into ledger");
 
 router.post('/AddNode', function(req,res,next){
     //need to get the IP from new SN host, which should have sent in request
-    var SN_IP = req.body;
+    var SN_IP = req.body.ip;
     //response will recieve IP and add to each ledger IP array
 
     console.log(req.body);

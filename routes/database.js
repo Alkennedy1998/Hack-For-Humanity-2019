@@ -52,7 +52,7 @@ const access = {
 		fs.writeFile(storageFile, JSON.stringify(storArray), function(err) {
 			if (err) throw (err);
 		});
-	}
+	},
 	updateStorageNode: (ip, vidNum) => {
 		let raw = fs.readFileSync(storageFile);
 		let storArray = JSON.parse(raw);
@@ -68,6 +68,7 @@ const access = {
 			} else {
 				return 0;
 			}
+		});
 	},
 	getStorageJSON: () => {
 		let raw = fs.readFileSync(storageFile);
