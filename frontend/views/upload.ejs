@@ -21,17 +21,28 @@
     <script>
         submitForms = function(){
             document.getElementById("form1").submit();
-            $.post('/videos/update', 
-                {
-                    name: $('#nameinput').val(),
-                    tag1: $('#tag1').val(),
-                    tag2: $('#tag2').val(),
-                    tag3: $('#tag3').val()
-                },
-                function(){
-                    console.log('success');
-                }
-            )
+			console.log($('#nameinput').val());
+			var data= {
+				name: $('#nameinput').val(),
+				tag1: $('#tag1').val(),
+				tag2: $('#tag2').val(),
+				tag3: $('#tag3').val()
+		    }
+            $.ajax({
+			type: 'post',
+			url: 'http://localhost/videos/update',   
+			data: JSON.stringify(data),
+			headers: {
+
+			}, 
+			success: function (data) {
+				console.log('Success');
+				console.log(data);
+			},  
+			error: function () {
+				console.log('We are sorry but our servers are having an issue right now');
+			}
+		})
 			//window.location.href = 'http://localhost';
         }
     </script>

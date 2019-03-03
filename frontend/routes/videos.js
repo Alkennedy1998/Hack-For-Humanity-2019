@@ -92,7 +92,7 @@ router.post('/update', function(req, res) {
     let tag2 = req.body.tag2;
     let tag3 = req.body.tag3;
     let ip = node_ip;
-	console.log(req.body.id);
+	console.log(req.body);
     data = {
 		id: name,
         name: name,
