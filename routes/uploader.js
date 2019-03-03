@@ -60,7 +60,8 @@ router.get('/getIps', (req, res) => {
 	console.log("test");
 	let storArray = access.getStorageJSON();
 	let indexes = jsonSort(storArray);
-	let ips = {ips: [storArray[indexes[0]].ip, storArray[indexes[1]].ip, storArray[indexes[2]].ip]};
+	let new_id = Math.floor(Math.random() * 1000000000);
+	let ips = {ips: [storArray[indexes[0]].ip, storArray[indexes[1]].ip, storArray[indexes[2]].ip], new_id: new_id};
 	res.status(200).send(ips);
 });
 
