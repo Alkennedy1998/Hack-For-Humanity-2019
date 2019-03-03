@@ -23,8 +23,8 @@ const storage = multer.diskStorage({
   }
   */
   
-  filename: function(req, file, cb){
-    cb(null,/*file.fieldname + '-' + */Date.now() + path.extname(file.originalname));
+  filename: function(req, file, cb){ 
+    cb(null,/*file.fieldname + '-' + */file.originalname);
   }
   
 });
@@ -37,7 +37,7 @@ const upload = multer({
   fileFilter: function(req, file, cb){
     checkFileType(file, cb);
   }
-}).single('myImage');
+}).single('myVideo');
 
 // Check File Type
 function checkFileType(file, cb){
@@ -67,7 +67,7 @@ router.post('/', (req, res) => {
         res.send("No file selected");
       } 
       else {
-        res.render('index');
+       // res.status(200).send();
        }
     }
   });
