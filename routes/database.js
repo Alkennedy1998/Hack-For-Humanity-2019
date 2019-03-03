@@ -3,8 +3,8 @@
  const dataFile = './routes/data/fileData.json';
  //const dataFile = './data/fileData.json';
  
- //const storageFile = './routes/data/streamNodeData.json';
- const storageFile = './data/streamNodeData.json';
+ const storageFile = './routes/data/streamNodeData.json';
+ //const storageFile = './data/streamNodeData.json';
  
  function parseJson(data, id){
 	console.log(data);
@@ -22,7 +22,7 @@ const access = {
 		let data = JSON.parse(raw);
 		let ip = parseJson(data, id);
 		for (i = 0; i < ip.length; i++){
-			this.increaseVidAmount(ip[0]);
+			this.increaseVidAmount(ip[i]);
 		}
 		let index = Math.floor(Math.random() * ip.length());
 		return ip[index];//add logic later
