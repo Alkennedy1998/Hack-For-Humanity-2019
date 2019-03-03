@@ -76,7 +76,7 @@ router.get('/uploadpage', (req, res) => {
         new_id = myJSON.new_id;
     })
     .then( function() {
-        const node_ip = node_ips[0];
+        node_ip = node_ips[0];
         console.log(node_ip);
         res.render('upload',{url:'http://' + node_ip + '/upload'});
     });
@@ -92,8 +92,9 @@ router.post('/update', function(req, res) {
     let tag2 = req.body.tag2;
     let tag3 = req.body.tag3;
     let ip = node_ip;
-
+	console.log(req.body.id);
     data = {
+		id: name,
         name: name,
         tag1: tag1,
         tag2: tag2,
@@ -101,7 +102,11 @@ router.post('/update', function(req, res) {
         ip: ip
     }
 
-    fetch(ledger_ip + '/update/new')
+    fetch(ledger_ip + '/upload/new',
+	{
+		method : 'POST',
+		body: data
+	})
     .then(function(response) {
         console.log(response.status);
     })
