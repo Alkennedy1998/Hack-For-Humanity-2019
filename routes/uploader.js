@@ -16,7 +16,7 @@ const handleError = (err, res) => {
 
 // Set The Storage Engine
 const storage = multer.diskStorage({
-  destination: './videos/',
+  destination: './videos',
   /*
   filename: function(req, file, cb){
     cb(null,'image.png')
@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
 //MAKE THIS WORK WITH mp4/videos
 const upload = multer({
   storage: storage,
-  limits:{fileSize: 1000000},
+  limits:{fileSize: 90000000},
   fileFilter: function(req, file, cb){
     checkFileType(file, cb);
   }
