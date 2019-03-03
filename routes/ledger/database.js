@@ -17,7 +17,7 @@ const access = {
 		return ip;
 	},
 	upload: (id, name, tags, ip) => {
-		
+		const file = './data/fileData.json';
 	}
 };
 
