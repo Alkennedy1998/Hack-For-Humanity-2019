@@ -2,10 +2,16 @@ var express = require('express');
 var router = express.Router();
 const path = require("path");
 const fs = require("fs");
+const ejs = require('ejs'); //need this??
 
+//test id: 1551569388690
+router.get("")
+
+var idNumber ="1551569388690"
+var aNewPath = "./videos/" + idNumber + ".mp4"
 
 router.get('/video', function(req, res) {
-    const path = './routes/uploadedImages/testVideo.mp4'
+    const path = aNewPath //MAKE THIS DYNAMIC
     const stat = fs.statSync(path)
     const fileSize = stat.size
     const range = req.headers.range

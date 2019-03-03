@@ -16,7 +16,7 @@ const handleError = (err, res) => {
 
 // Set The Storage Engine
 const storage = multer.diskStorage({
-  destination: './routes/uploadedImages/',
+  destination: './videos/',
   /*
   filename: function(req, file, cb){
     cb(null,'image.png')
@@ -24,12 +24,13 @@ const storage = multer.diskStorage({
   */
   
   filename: function(req, file, cb){
-    cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    cb(null,/*file.fieldname + '-' + */Date.now() + path.extname(file.originalname));
   }
   
 });
 
 // Init Upload
+//MAKE THIS WORK WITH mp4/videos
 const upload = multer({
   storage: storage,
   limits:{fileSize: 1000000},
@@ -54,6 +55,8 @@ function checkFileType(file, cb){
   }
 }
 
+
+//KEEP THIS
 router.post('/', (req, res) => {
   upload(req, res, (err) => {
     if(err){
