@@ -15,9 +15,19 @@
   </form>
 
   <form id = "tbar" >
-      <input type ="text" name = "tag" id= "tag" size = 30>
-      <button type="submit" id="submit">Search Tags</button>
+      <input type ="text" name = "tag" id= "tagentry" size = 30>
+      <button type="submitTag" id="submitTag">Search Tags</button>
     </form>
+  <!--<style>
+    .tagResults{
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    float: left;
+  }
+  </style>
+
+  <div class="tagResults"></div>-->
 
   <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
   <script>
@@ -28,6 +38,26 @@
       const inputField = $('#search');
       window.location.href = '/videos/stream/' + inputField.val();
     });
+
+    $('#submitTag').click((e) => {
+      e.preventDefault();
+      const inputField = $('#tagentry');
+      window.location.href = '/results' + inputField.val();
+    });
+
+    // GET /TAG   JSON ajax syncronously
+    //pre id ? to display?
+    /*$.ajax({
+    url: "ledger/search/:", //???
+    type: "GET",
+    data: "objs",
+    dataType: "json",
+    async: false,
+    success: function(objs) {
+      $('.tagResults').append('<div class="id')
+    }
+});*/
+    // $('.tagResults').append(`<div class="id-${data.id}"><ol><li>${data.title}</li></ol></div>`);
   </script>
 </body>
 

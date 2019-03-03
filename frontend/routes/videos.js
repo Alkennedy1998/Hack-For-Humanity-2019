@@ -62,6 +62,31 @@ router.get('/stream/:id', (req, res) => {
     });
 })
 
+//displays array of ojbs that match the tag input
+router.get('/:tag', (req, res) => {
+    //let newlink;
+    let objs; //array of objs
+    let taginput = req.params.id;
+    const payload = {
+        id: taginput
+    }
+    console.log("Tag input:" + taginput);
+    fetch(ledger_ip + '/legder/search/:' + taginput, {
+        method: 'GET'
+    })
+    .then(function(response) {
+        return(response.json());
+    })
+    .then(function(myJSON) {
+        objs = myJSON; //is this legal 
+        res.render('results', {items: objs}); // GET /:tag ==> { }
+    });
+    
+})
+
+
+
+
 
 //Uploads the video
 router.post('/upload', (req, res) => {
