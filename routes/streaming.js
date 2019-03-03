@@ -40,7 +40,5 @@ router.get('/video/:id', function(req, res) {
       fs.createReadStream(path).pipe(res)
     }
   });
-
-
-
+  
   module.exports = router;
