@@ -57,9 +57,10 @@ function checkFileType(file, cb){
 }
 
 router.get('/getIps', (req, res) => {
+	console.log("test");
 	let storArray = access.getStorageJSON();
 	let indexes = jsonSort(storArray);
-	let ips = [storArray[indexes[0]].ip, storArray[indexes[1]].ip, storArray[indexes[2]].ip];
+	let ips = {ips: [storArray[indexes[0]].ip, storArray[indexes[1]].ip, storArray[indexes[2]].ip]};
 	res.status(200).send(ips);
 });
 

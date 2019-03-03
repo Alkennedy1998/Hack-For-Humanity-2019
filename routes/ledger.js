@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 var access = require('./database.js');
 
-console.log("Made it into ledger");
-
 router.post('/AddNode', function(req,res,next){
     //need to get the IP from new SN host, which should have sent in request
     var SN_IP = req.body.ip;
