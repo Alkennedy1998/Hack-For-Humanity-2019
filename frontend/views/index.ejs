@@ -42,7 +42,7 @@
     $('#submitTag').click((e) => {
       e.preventDefault();
       const inputField = $('#tagentry');
-      window.location.href = '/videos/' + inputField.val();
+      window.location.href = '/videos/search/' + inputField.val();
     });
 
     // GET /TAG   JSON ajax syncronously
