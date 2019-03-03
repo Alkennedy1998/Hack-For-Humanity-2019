@@ -64,6 +64,12 @@ router.get('/getIps', (req, res) => {
 	res.status(200).send(ips);
 });
 
+router.post('/new', (req, res) => {
+	access.upload(req.query.id, req.query.name, req.query.tag, req.query.ip);
+	//access.upload(req.body.id, req.body.name, req.body.tags, req.body.ips);
+	res.status(200).send();
+});
+
 router.post('/', (req, res) => {
   upload(req, res, (err) => {
     if(err){

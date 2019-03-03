@@ -32,11 +32,6 @@
  }
 
 const access = {
-	increaseVidAmount: (ip) => {
-		for (i = 0; i<storageFile.length; i++){
-			if (storageFile[i].ip === ip) storageFile[i].numStore++;
-		}
-	},
 	getIp: (id) => {
 		//console.log(id);
 		let ip = parseJson(dataFile, id);
@@ -60,19 +55,22 @@ const access = {
 			tags: tags,
 			ipLoc: ip
 			};
+			console.log(ip.length);
 		if (Array.isArray(ip)){
 			for (i = 0; i < ip.length; i++){
-				access.increaseVidAmount(ip[i]);
+				for (j = 0; j < storageFile.length; j++){
+					if (storageFile[j].ip === ip[i]) storageFile[j].numStore++;
+				}
 			}
 		} else {
 			access.increaseVidAmount(ip);
 		}
 		dataFile.push(newObj);
 		//console.log(json);
-		fs.writeFile(dataAddress, JSON.stringify(dataFile), function(err) {
+		fs.writeFileSync(dataAddress, JSON.stringify(dataFile), function(err) {
 			if (err) throw (err);
 		});
-		fs.writeFile(storageAddress, JSON.stringify(storageFile), function(err) {
+		fs.writeFileSync(storageAddress, JSON.stringify(storageFile), function(err) {
 			if (err) throw (err);
 		});
 		updateStorageFile();
