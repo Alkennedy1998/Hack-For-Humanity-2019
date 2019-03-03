@@ -7,7 +7,7 @@
  //const storageFile = './data/streamNodeData.json';
  
  function parseJson(data, id){
-	console.log(data);
+	//console.log(data);
 	for (i = 0; i < data.length; i++){
 		if(data[i].id === id)
 			return data[i].ipLoc;
@@ -21,11 +21,12 @@ const access = {
 		let raw = fs.readFileSync(dataFile);
 		let data = JSON.parse(raw);
 		let ip = parseJson(data, id);
-		for (i = 0; i < ip.length; i++){
-			this.increaseVidAmount(ip[i]);
-		}
-		let index = Math.floor(Math.random() * ip.length());
-		return ip[index];//add logic later
+		//for (i = 0; i < ip.length; i++){
+			//this.increaseVidAmount(ip[i]);
+		//}
+		//let index = Math.floor(Math.random() * ip.length());
+		let obj = {ip: ip[0]};
+		return obj;//add logic later
 	},
 	upload: (id, name, tags, ip) => {
 		let raw = fs.readFileSync(dataFile);

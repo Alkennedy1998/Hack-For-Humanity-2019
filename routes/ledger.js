@@ -19,16 +19,16 @@ router.post('/AddNode', function(req,res,next){
 });
 
 
-router.post('/', function(req,res,next){
+router.get('/:id', function(req,res,next){
     
     //get fileID from body of the request
-    var fileID = req.body.id;
-    //console.log(req.body);
+    var fileID = req.params.id;
+    console.log(fileID);
 	
     var ip = access.getIp(fileID);
     
-	//console.log(ip);
-    res.status(204).send(ip);
+	console.log(ip);
+    res.status(200).send(ip);
 
 });
 module.exports = router;
