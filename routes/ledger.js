@@ -26,7 +26,7 @@ router.get('/search/:tag', function(req,res,next){
 router.get('/allIps', function(req,res,next){
 	let jsonArray = access.getStorageJSON();
 	res.status(200).send(jsonArray);
-}
+});
 
 router.get('/:id', function(req,res,next){
     

@@ -32,7 +32,7 @@ const access = {
 		let data = JSON.parse(raw);
 		let ip = parseJson(data, id);
 		//for (i = 0; i < ip.length; i++){
-			//this.increaseVidAmount(ip[i]);
+			//access.increaseVidAmount(ip[i]);
 		//}
 		//let index = Math.floor(Math.random() * ip.length());
 		let obj = {ip: ip[0]};
@@ -79,12 +79,14 @@ const access = {
 		console.log(tag);
 		let raw = fs.readFileSync(dataFile);
 		let data = JSON.parse(raw);
-		let matches = {};
+		let matches = [];
+		let tempObj;
 		for (i = 0; i < data.length; i++){
-			for (j = 0; j < data[i].tagslength; j++){
-				console.log("test");
-				if (data[i].tags[j] === tag)
-					matches.push(data[i]);
+			for (j = 0; j < data[i].tags.length; j++){
+				if (data[i].tags[j] === tag){
+					tempObj = {id: data[i].id, name: data[i].name};
+					matches.push(tempObj);
+				}
 			}
 		}
 		return matches;
