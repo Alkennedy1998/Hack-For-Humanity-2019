@@ -10,8 +10,10 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.16.0",
+    "jshint": "^2.10.1",
     "morgan": "~1.9.0",
-    "multer": "^1.4.1"
+    "multer": "^1.4.1",
+    "nodemon": "^1.18.10"
   },
   "main": "app.js",
   "author": "",
