@@ -28,10 +28,12 @@
 				tag2: $('#tag2').val(),
 				tag3: $('#tag3').val()
 		    }
+			
             $.ajax({
 			type: 'post',
 			url: 'http://localhost/videos/update',   
-			data: JSON.stringify(data),
+			data: data,
+			async: false,
 			headers: {
 
 			}, 

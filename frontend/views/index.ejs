@@ -15,9 +15,6 @@
   </form>
 
   <form id = "tbar" >
-    <input type ="text" name = "tag" id= "searchtag" size = 30>
-    <button type="submit" id="tagbutton">Search Tags</button>
-  </form>
       <input type ="text" name = "tag" id= "tagentry" size = 30>
       <button type="submitTag" id="submitTag">Search Tags</button>
     </form>
@@ -35,7 +32,7 @@
   <script>
     $('#searchbutton').click((e) => {
       e.preventDefault();
-      const idField = $('#search');
+      const idField = $('#searchid');
       window.location.href = '/videos/stream/' + idField.val();
     });
     $('#submitTag').click((e) => {
