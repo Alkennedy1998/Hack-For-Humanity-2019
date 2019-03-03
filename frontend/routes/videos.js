@@ -43,9 +43,7 @@ const handleError = (err, res) => {
 router.get('/stream/:id', (req, res) => {
     let node_ip;
     let vid_id = req.params.id;
-    const payload = {
-        id: vid_id
-    }
+    
     console.log(vid_id);
     fetch(ledger_ip + '/ledger/' + vid_id, {
         method: 'GET'
@@ -61,6 +59,10 @@ router.get('/stream/:id', (req, res) => {
         res.render('video', {ip: node_ip});
     });
 })
+
+router.get('/uploadpage', (req, res) => {
+    res.render('upload');
+});
 
 
 //Uploads the video

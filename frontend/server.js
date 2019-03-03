@@ -17,6 +17,23 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/nodeips', (req, res) => {
+    let node_ips = [];
+
+    fetch(ledger_ip + '/uploader/getips', {
+        method: 'GET'
+    })
+    .then(function(response) {
+        return(response.json());
+    })
+    .then(function(myJSON) {
+        node_ips = myJSON.ips;
+    })
+
+    res.send(node_ips);
+
+})
+
 let port = process.env.PORT;
 if(port == null || port == ""){
     port = 80;
