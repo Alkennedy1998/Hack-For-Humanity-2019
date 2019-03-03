@@ -13,9 +13,9 @@ var files = [
 ];
 */
 
-router.get('/files/:id', function(req,res,next){
+router.get('/filedata/:id', function(req,res,next){
     //get fileID from body of the request
-    var fileID = req.body.fileID;
+    var fileID = req.params.id;
     console.log('FileID Recieved');
     let ip = access.getIp(fileID);
     
