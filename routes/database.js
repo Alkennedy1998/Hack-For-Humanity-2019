@@ -35,9 +35,6 @@ const access = {
 	getIp: (id) => {
 		//console.log(id);
 		let ip = parseJson(dataFile, id);
-		for (i = 0; i < ip.length; i++){
-			access.increaseVidAmount(ip[i]);
-		}
 		let index;
 		try{
 			index = Math.floor(Math.random() * ip.length());
@@ -63,7 +60,9 @@ const access = {
 				}
 			}
 		} else {
-			access.increaseVidAmount(ip);
+			for (i = 0; i < storageFile.length; i++){
+				if (storageFile[i].ip === ip) storageFile[i].numStore++;
+			}
 		}
 		dataFile.push(newObj);
 		//console.log(json);
