@@ -1,1 +1,0 @@
-Basically all this does is post an image to /upload and then retrieve that image after with a get request to /image.png

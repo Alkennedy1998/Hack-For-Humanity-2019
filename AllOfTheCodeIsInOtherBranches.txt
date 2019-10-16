@@ -1,0 +1,1 @@
+All of the code is in either ledger-node or streaming-node
