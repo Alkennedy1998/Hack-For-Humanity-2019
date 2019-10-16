@@ -25,5 +25,5 @@ The following is a content streaming platform (like youtube) with a backend cons
 
 
 ```diff
-- The master branch is empty because all of the code is in either Ledger-node branch or Streaming-node branch. 
+- The master branch is empty because all of the code is in either Ledger-node branch, Streaming-node branch, or front-end branch. 
 ```
