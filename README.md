@@ -3,9 +3,6 @@
 
 The following is a content streaming platform (like youtube) with a backend consisting of a trustless system of coordinates nodes to store and stream users' videos.The platform would have no servers to pay for removing the need to rely on ads, removing, in turn, the power advertisers have over the content
 
-```diff
-- The master branch is empty because all of the code is in either Ledger node branch or Streaming node branch. 
-```
 ### Key terms
   -Streaming Node: Stores video data and streams that data on request
   -Ledger Node: Keeps track of the ip addresses of streaming nodes and which videos those streaming nodes store
@@ -25,3 +22,8 @@ The following is a content streaming platform (like youtube) with a backend cons
 9. The ip address of the streaming node is returned to the website and the website connects to the streaming node and begins to stream the selected video
 10. The watcher of the video can donate to the content creator and a small amount will be given to the node which streamed the video and the ledger node which found the streaming node
 11. Everyone is happy :)
+
+
+```diff
+- The master branch is empty because all of the code is in either Ledger-node branch or Streaming-node branch. 
+```
