@@ -3,9 +3,13 @@
 
 The following is a content streaming platform (like youtube) with a backend consisting of a trustless system of coordinates nodes to store and stream users' videos.The platform would have no servers to pay for removing the need to rely on ads, removing, in turn, the power advertisers have over the content
 
+## The platform works as follows:
+
 ### Key terms
   -Streaming Node: Stores video data and streams that data on request
+  
   -Ledger Node: Keeps track of the ip addresses of streaming nodes and which videos those streaming nodes store
+  
   -Supported Website: Any website that supports our API. Theoretically anyone can build their own youtube like front end using our open        backend APIs
 ### The beginning
 1. A bunch of people will who want to make some cash with their extra compute space will come along and run either a leger node or a streaming node on their computer
